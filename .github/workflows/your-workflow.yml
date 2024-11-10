@@ -1,0 +1,28 @@
+name: EKS Access
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  eks-access:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          role-to-assume: arn:aws:iam::337909738694:role/github-user-role
+          aws-region: us-east-2
+
+      - name: kubectl get nodes
+        run: |
+          aws eks update-kubeconfig --region us-east-2 --name github-cicd --role-arn arn:aws:iam::337909738694:role/github-user-role
+          kubectl get nodes
