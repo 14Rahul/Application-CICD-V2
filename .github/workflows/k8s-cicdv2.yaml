@@ -80,7 +80,7 @@ jobs:
           home: ${{ github.workspace }}
           sha: ${{ github.sha }}
           repo: ${{ github.repository }}
-          pat: ${{ secrets.CICD_REQUIREMENT_FREEZE_PAT }}
+          pat: ${{ secrets.GLOBAL_GITHUB_HTTPS_TOKEN }}
         run: |
           chmod +x Github-CICD-AWS-V2/cicdv2.sh
           Github-CICD-AWS-V2/cicdv2.sh $region $service $branch $environment $home $deploy_path $sha $namespace $freeze $pat $repo
