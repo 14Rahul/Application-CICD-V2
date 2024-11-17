@@ -52,6 +52,11 @@ jobs:
       id-token: write
       contents: read
     steps:
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          role-to-assume: arn:aws:iam::337909738694:role/OhIAMGithubActions-ProdEKSDeployRole
+          aws-region: us-east-2
       - name: Cleanup build folder
         run: |
           ls -la ./
