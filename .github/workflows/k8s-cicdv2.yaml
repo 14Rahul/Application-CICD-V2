@@ -82,5 +82,5 @@ jobs:
           repo: ${{ github.repository }}
           pat: ${{ secrets.CICD_REQUIREMENT_FREEZE_PAT }}
         run: |
-          chmod +x 14Rahul/cicdv2.sh
-          14Rahul/cicdv2.sh $region $service $branch $environment $home $deploy_path $sha $namespace $freeze $pat $repo
+          chmod +x Github-CICD-AWS-V2/cicdv2.sh
+          Github-CICD-AWS-V2/cicdv2.sh $region $service $branch $environment $home $deploy_path $sha $namespace $freeze $pat $repo
